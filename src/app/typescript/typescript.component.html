@@ -1,0 +1,25 @@
+<div class="ui-g">
+<div class="ui-g-4">
+    <form [formGroup]="dynamicForm">
+    <p-dropdown [options]="dropValue" formControlName="dropValue"></p-dropdown>
+</form>
+</div>
+<h4>JSON DATA</h4>
+<pre class="ui-g-4">{{firstJsonArrayData | json}}</pre>
+<h4>JSON DATA</h4>
+<pre class="ui-g-4">{{ jsondata2 | json}}</pre>
+</div>
+
+<div class="ui-g">
+<h4>JSON DATA</h4>
+<pre class="ui-g-4">{{jsonvalue|json}}</pre>
+<h4>JSON DATA</h4>
+<pre class="ui-g-4">{{jsondata | json}}</pre>
+<h4>JOIN</h4>
+<pre class="ui-g-4">{{jsondata5| json}}</pre>
+</div>
+<label for="pword">Password:</label>
+<span>
+   <input type="hidden" name="pword" />
+   <input type="text" class="masked" id="pword" autocomplete="off" />
+</span>

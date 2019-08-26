@@ -1,0 +1,32 @@
+<p-toast></p-toast>
+<button id="home" type="button" pButton routerLink='/crud' label="Go to Home" class="ui-button-secondary"></button>
+<fieldset>
+<form [formGroup]="dialogForm">
+    <div class="formGroup">
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <span class="ui-float-label">
+                <input id="employeeName" type="text" size="40" pInputText formControlName="name"
+                    [(ngModel)]="employee_name">
+                <label for="employeeName">Employee_Name</label>
+            </span>
+        </div>
+        <br>
+        <div class="ui-g-12">
+            <span class="ui-float-label">
+                <input id="employeeSalary" type="text" size="40" pInputText formControlName="salary">
+                <label for="employeeSalary">Employee_Salary</label>
+            </span>
+        </div>
+        <br>
+        <div class="ui-g-12">
+            <span class="ui-float-label">
+                <input id="employeeAge" type="text" size="40" pInputText formControlName="age">
+                <label for="employeeAge">Employee_Age</label>
+            </span>
+        </div>
+    </div>
+</div>
+</form>
+</fieldset>
+<button type="button" pButton (click)="addEmployee(dialogForm)" label="Add Row" class="ui-button-primary"></button>

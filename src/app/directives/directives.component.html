@@ -1,0 +1,86 @@
+<p>directives works!</p>
+<div class="container">
+    <div class="panel panel-danger">
+        <div class="panel-heading" (click)="opened = !opened">
+            Click me
+        </div>
+        <div class="panel-body" *ngIf="opened">body</div>
+    </div>
+</div>
+
+
+<h4>ngFor</h4>
+<select name="city" (change)="onChange($event.target.value)">
+    <option *ngFor="let country of countries" [value]="country.id">
+        {{country.name}}
+    </option>
+</select>
+<select id="sell" name="country">
+    <option *ngFor="let city of cities" [value]="city">{{city}}</option>
+</select>
+
+<p-dropdown (click)="onSelect($event.target.value)" [options]="cities1" [(ngModel)]="selectedCity1"></p-dropdown>
+<p-dropdown *ngIf="drop" [options]="cities2" [(ngModel)]="selectedCity2" optionLabel="name"></p-dropdown>
+
+<h4>Ng Swtich</h4>
+<p>Select the button to change the Content</p>
+<div class="nav nav-pills">
+    <button pButton label="Calender" [class.active]="viewMode=='map'" (click)="viewMode='map'"></button>&nbsp;&nbsp;
+    <button pButton label="Time" [class.active]="viewMode=='list'" (click)="viewMode='list'"></button>
+</div><br>
+<div [ngSwitch]="viewMode">
+    <div *ngSwitchCase="'map'">
+        <p-calendar [(ngModel)]="date1" placeholder="Calender"></p-calendar>
+    </div>
+    <div *ngSwitchCase="'list'">
+        <p-calendar [(ngModel)]="date8" [timeOnly]="true" placeholder="Time"></p-calendar>
+    </div>
+    <div *ngSwitchDefault>Otherwise</div>
+</div>
+<p *ngIf="true">
+    Expression is true and ngIf is true.
+    This paragraph is in the DOM.
+</p>
+<p *ngIf="false">
+    Expression is false and ngIf is false.
+    This paragraph is not in the DOM.
+</p>
+
+<p-inputSwitch [(ngModel)]="checked"></p-inputSwitch>
+<div *ngIf="checked">
+    <input type="text" pInputText placeholder="Name" />&nbsp;
+    <input type="password" pPassword placeholder="password" />
+</div>
+<h4>ngFor Binding</h4>
+<ol>
+    <li *ngFor="let sub of subjects">{{sub}}</li>
+</ol>
+<p-toggleButton (click)="isVisible = !isVisible" [(ngModel)]="checked1" onLabel="On" offLabel="Off"
+    [style]="{'width':'150px'}"></p-toggleButton>
+<div *customIf="isVisible">
+    <p-dropdown (click)="onSelect()" [options]="cities1" [(ngModel)]="selectedCity1"></p-dropdown>
+</div>
+<div>
+    <h4>Dropdown values from array using ngFor Directive</h4>
+
+    <select id="department" name="department" [(ngModel)]="department">
+        <option *ngFor="let dept of departments" [value]="dept.id">{{dept.name}}</option>
+    </select>
+
+</div>
+
+<h4>DropDown using SwitchCase</h4>
+<div>
+    <select [(ngModel)]="country">
+        <option>Select Option</option>
+        <option>Value 1</option>
+        <option>Value 2</option>
+        <option>Value 3</option>
+    </select>
+
+    <div [ngSwitch]="country">
+        <p *ngSwitchCase="'Value 1'"> Value 1 details here </p>
+        <p *ngSwitchCase="'Value 2'"> Value 2 details here </p>
+        <p *ngSwitchCase="'Value 3'"> Value 3 details here </p>
+    </div>
+</div>

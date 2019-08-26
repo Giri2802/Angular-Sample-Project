@@ -1,0 +1,33 @@
+<fieldset>
+<p>formchild3 works!</p>
+<h3>
+    Department List
+  </h3>
+  <ul class="items">
+    <!-- <li (click)="onSelect (department)"*ngFor="let department of departments">
+      <span class="badge">{{department.id}}</span>{{department.name}}
+    </li> -->
+  </ul>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID </th>
+            <th>Name</th>
+            <th>Employee ID</th>
+            <th>Department</th>
+          
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let department of list">
+            <td> {{department.id}}</td>
+          
+            <td><button (click)="onSelect(department)"> {{department.name}}</button></td>
+            <td> {{department.empid}}</td>
+            <td> {{department.dept}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </fieldset>
+
+<router-outlet></router-outlet>  

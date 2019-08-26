@@ -1,0 +1,245 @@
+<p-toolbar>
+        <button pButton label="child3" routerLinkActive="Active" routerLink="fchild3" class="ui-button-secondary ui-button-raised"
+            type="button"></button>&nbsp;&nbsp;
+        <button pButton label="child4"  routerLinkActive="active" (click)="getIndex()" routerLink="fchild4" class="ui-button-secondary ui-button-raised"
+            type="button"></button>
+    </p-toolbar>
+    <router-outlet></router-outlet>
+<p>Template Driven Form</p>
+<form #templateForm="ngForm">
+    <div class="ui-g">
+        <div class="ui-g-3">
+            <span class="ui-float-label">
+                <input id="float-input" type="text" size="30" [(ngModel)]="model.uname" name="uname" #uname="ngModel"
+                    required="required" minlength="3" maxlength="20" pInputText>
+                <label for="float-input">Firstname</label>
+            </span>
+            <span class="error" *ngIf="uname.touched && uname.invalid && uname.errors.required">Firstname
+                can't be blank</span>
+            <span class="error" *ngIf="uname.touched && uname.invalid && uname.errors.minlength">Minimum 3 characters
+                required</span>
+            <span class="error" *ngIf="uname.touched && uname.invalid && uname.errors.maxlength">shouldn't exceed 20
+                characters</span>
+        </div>
+        <div class="ui-g-3">
+            <span class="ui-float-label">
+                <input id="float-input" type="text" size="30" [(ngModel)]="model.lname" name="lname" #lname="ngModel"
+                    required="required" minlength="3" maxlength="20" pInputText>
+                <label for="float-input">Lastname</label>
+            </span>
+            <span class="error" *ngIf="lname.touched && lname.invalid && lname.errors.required">Lastname Can't be
+                Blank</span>
+            <span class="error" *ngIf="lname.touched && lname.invalid && lname.errors.minlength">Minimum 3 characters
+                required</span>
+            <span class="error" *ngIf="lname.touched && lname.invalid && lname.errors.maxlength">shouldn't exceed 20
+                characters</span>
+        </div>
+        <div class="ui-g-3">
+            <span class="ui-float-label">
+                <input id="float-input" type="password" size="30" [(ngModel)]="model.password" name="password"
+                    #password="ngModel" required="required" minlength="5" maxlength="10" pPassword>
+                <label for="float-input">Password</label>
+            </span>
+            <span class="error" *ngIf="password.touched && password.invalid && password.errors.required">Password
+                can't be blank</span>
+            <span class="error" *ngIf="password.touched && password.invalid && password.errors.minlength">Password must
+                atleat 5 Characters</span>
+        </div>
+        <div class="ui-g-3">
+            <span class="ui-float-label">
+                <input id="float-input" type="password" size="30" appCustomvalidation="password"
+                    [(ngModel)]="model.cpassword" name="cpassword" #cpassword="ngModel" required="required"
+                    minlength="5" maxlength="10" pPassword>
+                <label for="float-input">Confirm Password</label>
+            </span>
+            <span class="error" *ngIf="cpassword.touched && cpassword.invalid && cpassword.errors.required">Confirm
+                Password
+                can't be blank &nbsp;</span>
+            <span class="error" *ngIf="cpassword.touched && cpassword.invalid && cpassword.errors.minlength">Confirm
+                Password must
+                atleat 5 Characters &nbsp;</span>
+            <span class="error" *ngIf="cpassword.errors.notEqual">Confirm Password must match with Password</span>
+        </div>
+    </div>
+    <div class="ui-g">
+        <div class="ui-g-3">
+            <span class="ui-float-label">
+                <input id="float-input" type="text" size="30" required="required" [(ngModel)]="model.phone" name="phone"
+                    minlength="10" #phone="ngModel" pInputText>
+                <label for="float-input">Phone Number</label>
+            </span>
+            <span class="error" *ngIf="phone.touched && phone.invalid && phone.errors.required">Please enter phone
+                number</span>
+            <span class="error" *ngIf="phone.touched && phone.invalid && phone.minlength">phone number must be 10
+                Digits</span>
+        </div>
+        <div class="ui-g-3">
+            <span class="ui-float-label">
+                <p-inputMask mask="99/99/9999" [(ngModel)]="model.dob" name="dob" placeholder="99/99/9999"
+                    #dob="ngModel" required="required" slotChar="mm/dd/yyyy"></p-inputMask>
+                <label for="float-input">Date of Birth</label>
+            </span>
+            <span class="error" *ngIf="dob.touched && dob.invalid && dob.errors.required">Date of Birth is
+                required</span>
+        </div>
+        <div class="ui-g-3 ui-fluid">
+            <span class="ui-float-label">
+                <p-multiSelect [options]="skills" placeholder="Skills" [(ngModel)]="model.skill" name="skill"
+                    required="required" #skill="ngModel" [panelStyle]="{minWidth:'25em'}"></p-multiSelect>
+            </span>
+            <span class="error" *ngIf="skill.touched && skill.invalid && skill.errors.required">Please select atleast
+                one Skill</span>
+        </div>
+        <div class="ui-g-3">
+            <span class="ui-float-label">
+                <p-dropdown [options]="dropvalues" [(ngModel)]="model.city" name="city" required="required"
+                    #city="ngModel"></p-dropdown>
+            </span>
+            <span class="error" *ngIf="city.touched && city.invalid && city.errors.required">Please select city</span>
+        </div>
+    </div>
+    <div class="ui-g-12">
+        <div class="ui-g-3">
+            <p-listbox [options]="cities" [(ngModel)]="selectedCities" name="listbox" multiple="multiple"
+                checkbox="checkbox" filter="filter" #list="ngModel" required optionLabel="name">
+                <p-header>
+                    <i class="fa fa-state"></i>
+                    Select State
+                </p-header>
+            </p-listbox>
+            <span class="error" *ngIf="list.touched && list.invalid && list.errors.required">Select atleast one
+                value</span>
+            <p>Selected Cities: <span *ngFor="let val1 of selectedCities"> {{val1.name}}</span></p>
+        </div>
+        <div class="ui-g-3">
+            <div class="ui-g-12">
+                <h4>Gender:</h4>
+                <p-radioButton name="gender1" value="Male" label="Male" [(ngModel)]="model.gender" #gender="ngModel"
+                    inputId="male">
+                </p-radioButton>
+            </div>
+            <div class="ui-g-12">
+                <p-radioButton name="gender1" value="Female" label="Female" [(ngModel)]="model.gender" #gender="ngModel"
+                    inputId="female">
+                </p-radioButton>
+            </div>
+
+            Selected Value : {{gender}}
+        </div>
+        <div class="ui-g-3">
+
+        </div>
+    </div>
+    <div class="ui-g-12">
+        <div class="ui-g-3">
+            <button pButton type="submit" label="Submit" (click)="onSubmit()" class="ui-button-rounded"></button>
+        </div>
+        <div class="ui-g-3">
+            <button pButton type="button" label="Add Table Row" (click)="addRow(templateForm)"
+                class="ui-button-rounded"></button>
+        </div>
+        <div class="ui-g-3">
+            <button pButton type="button" label="Reset" (click)="reset(templateForm)"
+                class="ui-button-rounded"></button>
+        </div>
+        <div class="ui-g-3">
+            <button pButton type="button" label="Add Row" (click)="addEmptyRow(templateForm)"
+                class="ui-button-rounded"></button>
+        </div>
+    </div>
+
+
+
+    <h4>Form Data in Table</h4>
+
+    <div class="ui-g">
+        <p-table [value]="tabledata" [columns]="cols">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Password</th>
+                    <th>Confirm Password</th>
+                    <th>Phone Number</th>
+                    <th>Date of Birth</th>
+                    <th>Skills</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Gender</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-value >
+                <tr>
+                    <td>{{value.uname}}</td>
+                    <td>{{value.lname}}</td>
+                    <td>{{value.password}}</td>
+                    <td>{{value.cpassword}}</td>
+                    <td>{{value.phone}}</td>
+                    <td>{{value.dob}}</td>
+                    <td>{{value.skill}}</td>
+                    <td>{{value.city}}</td>
+                    <td *ngFor="let g of selectedCities">{{g.name}}</td>
+                    <td>{{value.gender1}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <!-- <div class="ui-rtl" dir="rtl">
+        
+            <h3>Accordion</h3>
+            <p-accordion>
+                <p-accordionTab header="Godfather I" [selected]="false">
+                    The story begins as Don Vito Corleone, the head of a New York Mafia family, overseeshis daughter's wedding. His beloved son ichael has just come home from the war, but does not intend to become part of his father's business. T hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+                </p-accordionTab>
+                <p-accordionTab header="Godfather II">
+                    Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+                </p-accordionTab>
+                <p-accordionTab header="Godfather III">
+                    After a break of more than  15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+                </p-accordionTab>
+            </p-accordion>
+            
+    </div> -->
+    <div class="ui-g-12">
+        <textarea rows="5" cols="30" pInputTextarea autoResize="autoResize" name="original"
+            [(ngModel)]="model.original"></textarea>&nbsp;
+        <div>
+            <p-inputSwitch [(ngModel)]="checked2" (onChange)="handleChange(templateForm)"></p-inputSwitch> &nbsp;
+        </div>
+        <textarea rows="5" cols="30" pInputTextarea autoResize="autoResize" name="duplicate"
+            [(ngModel)]="model.duplicate"></textarea>
+    </div>
+</form>
+
+<!-- 
+<div [formGroup]="arrayForm">
+    <div class="ui-g">
+        <p-fieldset legend="Address" [toggleable]="true" collapsed="false">
+            <div class="ui-g-6">
+                    <div formArrayName="workexperience"
+                        *ngFor="let experience of arrayForm.get(workexperience).controls; let addedrow = index;">
+                        <div [formGroupName]="addedrow">
+                            <div class="ui-float-label">
+                                <input type="text" id="float-input" formControlName="company" pInputText />
+                                <label for="float-input">Company</label>
+                            </div><br>
+                            <div class="ui-float-label">
+                                <input type="text" id="float-input" formControlName="experience" pInputText />
+                                <label for="float-input">Experience</label>
+                            </div><br>
+                            <div class="ui-float-label">
+                                <input type="text" id="float-input" formControlName="designation" pInputText />
+                                <label for="float-input">Designation</label>
+                            </div><br>
+                            <div class="ui-float-label">
+                                <input type="text" id="float-input" formControlName="domain" pInputText />
+                                <label for="float-input">Domian</label>
+                            </div><br>
+                        </div>
+                    </div>
+                    <button pButton type="button" label="Add Experience" (click)="addExperience()"
+                        class="ui-button-rounded"></button>
+            </div>
+        </p-fieldset>
+    </div>
+</div> -->

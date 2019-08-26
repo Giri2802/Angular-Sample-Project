@@ -1,0 +1,18 @@
+<fieldset>
+    <legend><b><h2>Parent Component Works</h2></b></legend>
+<p-toolbar>
+    <button pButton label="Child One" routerLink='childone' class="ui-button-secondary ui-button-raised"
+    type="button"></button>&nbsp;&nbsp;
+<button pButton label="Child Two" routerLink="childtwo" class="ui-button-secondary ui-button-raised"
+    type="button"></button>&nbsp;&nbsp;
+    <button pButton label="Child Three" routerLink="childthree" class="ui-button-secondary ui-button-raised"
+    type="button"></button>
+</p-toolbar>
+<router-outlet></router-outlet>
+<div *ngFor="let message of messages">
+    <p class="text">{{message.text}}</p>
+</div>
+<h4>Product Status:<strong> {{productStatus}}</strong></h4>
+<app-childone [product]="products" (status)="onStatus($event)"></app-childone>
+<pre>{{value | json}}</pre>
+</fieldset>

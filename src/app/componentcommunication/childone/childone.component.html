@@ -1,0 +1,28 @@
+<br><br>
+<fieldset>
+    <legend><b>Child 1 Displaying</b></legend>
+    <div class="ui-g-6">
+        <p-table [value]="product">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-pro>
+                <tr >
+                    <td>{{pro.id}}</td>
+                    <td>{{pro.name}}</td>
+                    <td>
+                        <p-button label="Enable" (click)="isActive(true)" [disabled]="enabled"></p-button>&nbsp;&nbsp;
+                        <p-button label="Disable" (click)="isActive(false)" [disabled]="disabled"></p-button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <p-button (click)="sendMessage()" label="Send Message"></p-button>    
+    <p-button (click)="clearMessage()" label="Clear Message"></p-button>
+
+</fieldset>

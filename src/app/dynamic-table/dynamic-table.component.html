@@ -1,0 +1,26 @@
+<p-table [value]="data1">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Address Type</th>
+            <th>Address Line 1</th>
+            <th>Address Line 2</th>
+            <th>Address Line 3</th>
+            <th>Address Line 4</th>
+            <th>City</th>
+            <th>Postal Code</th>
+            <th>Country</th>
+        </tr>
+    </ng-template>
+     <ng-template pTemplate="body" let-val>
+        <tr *ngFor="let val1 of val.deliveryAddresses">
+            <td>{{val1.addressType}}</td>
+            <td>{{val1.addressLineOne}}</td>
+            <td>{{val1.addressLineTwo}}</td>
+            <td>{{val1.addressLineThree}}</td>
+            <td>{{val1.addressLineFour}}</td>
+            <td>{{val1.city}}</td>
+            <td>{{val1.zipCode}}</td>
+            <td>{{val1.country}}</td>
+        </tr>
+    </ng-template>
+</p-table>

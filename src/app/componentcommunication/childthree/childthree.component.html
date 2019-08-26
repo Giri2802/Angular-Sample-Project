@@ -1,0 +1,22 @@
+<br><br>
+<fieldset>
+<legend><b>Child 3 Displaying</b></legend>
+{{childname}}
+
+<br>
+<br>
+<form [formGroup] = "childFormData">
+<input type="text" pInputText formControlName="uname" placeholder="Enter Name"/>&nbsp;
+
+<input type="text" pInputText formControlName="lname" placeholder="Enter LastName"/>&nbsp;
+
+<input type="text" pInputText formControlName="phone" placeholder="Enter Phone Number"/>&nbsp;
+
+<input type="text" pInputText formControlName="email" placeholder="Enter Email"/>&nbsp;
+
+
+<p-button label="Get Json" (click)="onJson()"></p-button>
+<pre *ngIf="data">{{childFormData.value | json}}</pre>
+<p>{{values | json}}</p>
+</form>
+</fieldset>

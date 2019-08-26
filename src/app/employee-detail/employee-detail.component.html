@@ -1,0 +1,33 @@
+<p-toast></p-toast>
+    <form [formGroup]="dialogForm">
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <span class="ui-float-label">
+                    <input id="employeeName" type="text" size="40" pInputText formControlName="name" >
+                    <label for="employeeName">Employee_Name</label>
+                </span>
+            </div>
+            <br>
+            <div class="ui-g-12">
+                <span class="ui-float-label">
+                    <input id="employeeSalary" type="text" size="40" pInputText formControlName="salary">
+                    <label for="employeeSalary">Employee_Salary</label>
+                </span>
+            </div>
+            <br>
+            <div class="ui-g-12">
+                <span class="ui-float-label">
+                    <input id="employeeAge" type="text" size="40" pInputText formControlName="age">
+                    <label for="employeeAge">Employee_Age</label>
+                </span>
+            </div>
+        </div>
+
+    </form>
+
+    <p-footer>
+        <button type="button" pButton (click)="updateUser()" class="ui-button-success" label="Update Row"></button>
+        <button type="button" pButton icon="pi pi-close" (click)="display=false" label="No" routerLink='/crud'
+            class="ui-button-secondary"></button>
+    </p-footer>
+    

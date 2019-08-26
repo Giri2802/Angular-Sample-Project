@@ -1,0 +1,39 @@
+.content-section.introduction {
+    background-image: linear-gradient(to left, #2BC0EC, #1B81D7);
+    color: #FFF;
+    }
+    
+    .content-section {
+    display: block;
+    padding: 15px;
+    overflow: hidden;
+    background-color: #F5F7F8;
+    }
+    
+    .content-section:first-of-type > div > span {
+    line-height: 1.5em;
+    }
+    
+    :host ::ng-deep .feature-title {
+    font-size: 25px;
+    display: block;
+    }
+    
+    .addon-error {
+    span {
+    border-color: red;
+    }
+    }
+    
+    .navgatetxt {
+    text-align: -webkit-right;
+    font-weight: bold;
+    cursor: pointer;
+    }
+    .titletxt {
+    text-align: -webkit-center;
+    }
+    .formFeildalignements {
+    margin-left: auto;
+    margin-right: auto;
+    }

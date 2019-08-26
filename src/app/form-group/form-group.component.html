@@ -1,0 +1,226 @@
+<p-toolbar>
+    <button pButton label="Data Binding" routerLinkActive="active" (click)="fchild1()" class="ui-button-secondary ui-button-raised"
+        type="button"></button>&nbsp;&nbsp;
+    <button pButton label="child2" routerLink="fchild2" class="ui-button-secondary ui-button-raised"
+        type="button"></button>
+</p-toolbar>
+
+<router-outlet></router-outlet>
+
+<div>
+<form [formGroup]="Reactiveforms" (ngSubmit)="onSubmit()">
+    <div class="ui-g">
+        <div class="ui-g-3">
+            <h3 class="first">Basic</h3>
+            <input id="input" type="text" size="30" placeholder="Enter Your Name" formControlName="uname" pInputText>
+            <span class="error" *ngIf="Reactiveforms.controls.uname.touched && Reactiveforms.controls.uname.invalid &&
+            Reactiveforms.controls.uname.errors.required">Username can't be blank</span>
+            <span class="error" *ngIf="Reactiveforms.controls.uname.errors.minlength">
+                Name must be at least 5 characters long.
+            </span>
+            <span class="error"
+                *ngIf="!Reactiveforms.controls.uname.valid && Reactiveforms.controls.uname.dirty"></span>
+            <span class="error" *ngIf="Reactiveforms.controls.uname.errors.maxlength"> Name must be should not exceed 15
+                characters
+                long.</span>
+        </div>
+        <div class="ui-g-3">
+            <h3 class="first">Last Name</h3>
+            <input pInputText type="text" weakLabel="weak" formControlName="lname" placeholder="Enter Your LastName" />
+            <span class="error" *ngIf="Reactiveforms.controls.lname.touched && Reactiveforms.controls.lname.invalid &&
+            Reactiveforms.controls.lname.errors.required">Lastname Can't be Blank</span>
+            <span class="error" *ngIf="Reactiveforms.controls.lname.errors.minLength">LastName must be at least 1
+                Character</span>
+            <span class="error" *ngIf="Reactiveforms.controls.lname.errors.maxlength">LastName should not exceed 8
+                Charcters</span>
+
+        </div>
+        <div class="ui-g-3">
+            <h3 class="first">Textarea</h3>
+            <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" formControlName="desc"
+                placeholder="Write About Yourself"></textarea>
+            <span class="error"
+                *ngIf="Reactiveforms.controls.desc.touched && Reactiveforms.controls.desc.errors.required && Reactiveforms.controls.desc.invalid">Please
+                Enter Description</span>
+            <span class="error" *ngIf="Reactiveforms.controls.desc.errors.minLength">Enter Atleast 10 Characters</span>
+            <span class="error" *ngIf="Reactiveforms.controls.desc.errors.maxlength">Description Should not exceed
+                morethan 120
+                characters</span>
+
+        </div>
+        <div class="ui-g-3">
+            <h3 class="first">Basic</h3>
+            <p-autoComplete [suggestions]="filteredStatesSingle" (completeMethod)="filterStateSingle($event)"
+                formControlName="state" [size]="30" placeholder="State" [minLength]="1" [dropdown]="true">
+                <ng-template let-state pTemplate="item">
+                    <div class="ui-helper-clearfix" style="border-bottom:1px solid #D5D5D5">
+                        <div style="font-size:18px;float:left;margin:10px 10px 0 0">{{state}}</div>
+                    </div>
+                </ng-template>
+            </p-autoComplete>
+
+        </div>
+        <div>
+            <span class="error"
+                *ngIf="Reactiveforms.controls.state.required && Reactiveforms.controls.state.touched && Reactiveforms.controls.state.invalid">
+                Please select State</span>
+        </div>
+    </div>
+    <div class="ui-g">
+        <div class="ui-g-3">
+            <p-calendar [(ngModel)]="date3" placeholder="Date of Birth" formControlName="dob" [showIcon]="true">
+            </p-calendar>
+            <span class="error"
+                *ngIf="Reactiveforms.controls.dob.touched && Reactiveforms.controls.dob.invalid && Reactiveforms.controls.dob.errors.required">Please
+                select Date of Birth</span>
+        </div>
+        <div class="ui-g-3">
+            <input type="text" pInputText pKeyFilter="num" placeholder="Phone Number" formControlName="phone">
+            <span class="error"
+                *ngIf="Reactiveforms.controls.phone.touched && Reactiveforms.controls.phone.invalid && Reactiveforms.controls.phone.errors.required">Phone
+                Number not be Blank</span>
+            <span class="error" *ngIf="Reactiveforms.controls.phone.errors.minLength">Phone Number must contain 10
+                digits</span>
+            <span class="error" *ngIf="Reactiveforms.controls.phone.errors.maxlength">Phone Number should not exceed 10
+                digits</span>
+
+        </div>
+        <div class="ui-g-3 ui-fluid">
+            <p-multiSelect [options]="cities1" formControlName="city"></p-multiSelect>
+            <span class="error"
+                *ngIf="Reactiveforms.controls.city.touched && Reactiveforms.controls.city.invalid && Reactiveforms.controls.errors.required">Choose
+                any of Value</span>
+        </div>
+
+        <div class="ui-g-3">
+            <p-dropdown [options]="data1" placeholder="City" formControlName="data"></p-dropdown>
+            <span class="error"
+                *ngIf="Reactiveforms.controls.data.touched && Reactiveforms.controls.data.invalid && Reactiveforms.controls.data.errors.required">Please
+                select anyone of these</span>
+        </div>
+    </div>
+    <div class="ui-g">
+        <div class="ui-g-3">
+            <input id="input" type="email" size="30" placeholder="Enter Your Email" formControlName="email" pInputText
+                pattern="\w+@\w+\.\w{2,3}">
+            <span class="error"
+                *ngIf="Reactiveforms.controls.email.touched && Reactiveforms.controls.email.invalid && Reactiveforms.controls.email.errors.required">Enter
+                your email id</span>
+            <span class="error" *ngIf="Reactiveforms.controls.email.errors.pattern">Enter Valid Email Id</span>
+        </div>
+        <div class="ui-g-3">
+            <input id="input" type="password" size="30" placeholder="Enter Your Password" formControlName="password"
+                onCopy="return false"onPaste="return false" pPassword>
+            <span class="error"
+                *ngIf="Reactiveforms.controls.password.touched && Reactiveforms.controls.password.invalid && Reactiveforms.controls.password.errors.required">Please
+                Enter Password</span>
+            <span class="error" *ngIf="Reactiveforms.controls.password.minLength">password minimum of 3
+                Characters</span>
+            <span class="error" *ngIf="Reactiveforms.controls.password.maxlength">Password maximum of 8
+                Characters</span>
+        </div>
+        <div class="ui-g-3">
+            <input id="input" type="password" size="30" placeholder="Confirm Password" formControlName="ConfPassword"
+                pPassword>
+            <span class="error"
+                *ngIf="Reactiveforms.controls.ConfPassword.touched && Reactiveforms.controls.ConfPassword.invalid && Reactiveforms.controls.ConfPassword.errors.required">please
+                enter Confirm PAssword</span>
+            <span class="error" *ngIf="Reactiveforms.controls.ConfPassword.minLength">confirm password minimum of 3
+                Characters</span>
+            <span class="error" *ngIf="Reactiveforms.controls.password.maxlength">confirm password maximum of 8
+                Characters</span>
+            <span class="error"
+                *ngIf="Reactiveforms.controls.ConfPassword.touched &&  Reactiveforms.controls.ConfPassword.error.notEqual">Passwords
+                must match</span>
+        </div>
+    </div>
+    <div>
+        <p-accordion>
+            <p-accordionTab header="New" selected="true">
+                <div class="ui-g" style="width:250px;margin-bottom:10px">
+                    <div class="ui-g">
+                        <h3>Select Department</h3>
+
+                        <p-checkbox name="group1" value="Department 1" label="Department 1" formControlName="dep1"
+                            [(ngModel)]="selectedCities" inputId="ny"></p-checkbox><br>&nbsp;
+                        <p-checkbox name="group1" value="Department 2" label="Department 2" formControlName="dep1"
+                            [(ngModel)]="selectedCities" inputId="sf"></p-checkbox><br>
+                        <p-checkbox name="group1" value="Department 3" label="Department 3" formControlName="dep1"
+                            [(ngModel)]="selectedCities" inputId="la"></p-checkbox>
+                    </div>
+                    <span class="error"
+                        *ngIf="Reactiveforms.controls.dep1.touched && Reactiveforms.controls.dep1.invalid && Reactiveforms.controls.dep1.errors.required">Select
+                        atleat one Department</span>
+                    <div class="ui-g">
+                        <h3>Rate Yourself: {{val1}}</h3>
+                        <p-slider [(ngModel)]="val1" [style]="{'width':'14em'}" formControlName="slider"></p-slider>
+                    </div>
+                    <span class="error"
+                        *ngIf="Reactiveforms.controls.slider.touched && Reactiveforms.controls.slider.invalid && Reactiveforms.controls.slider.errors.required">Plase
+                        enter your rating</span>
+                    <div class="ui-g">
+                        <h4>Address</h4>
+                        <textarea rows="5" cols="30" pInputTextarea placeholder="Current Address"
+                            autoResize="autoResize" name="original1" formControlName="original"></textarea>&nbsp;
+                        <p-inputSwitch formControlName="checked2" (onChange)="handleChange()"></p-inputSwitch>
+                        &nbsp;
+                        <p>Permanent Address is same as Above Address</p>
+                        <textarea rows="5" placeholder="Permanent Address" cols="30" pInputTextarea
+                            autoResize="autoResize" name="duplicate1" formControlName="duplicate"></textarea>
+                    </div>
+                </div>
+            </p-accordionTab>
+        </p-accordion>
+    </div>
+
+    <div class="ui-g">
+        <div class="ui-g-2"><button pButton type="button" (click)="addjson()" label="Add Json"></button></div>
+        <div class="ui-g-2"><button pButton type="button" (click)="reset()" label="Reset"></button></div>
+        <div class="ui-g-2"><button pButton type="button" (click)="addrow()" label="Add to Table"></button></div>
+        <div class="ui-g-2"><button pButton type="submit" (click)="onSubmit()" label="Submit"></button></div>
+    </div>
+    <div class="ui-g-12" *ngIf=data98>{{ Reactiveforms.value | json }}</div>
+    <div class="ui=g-12">
+        <p-table [value]="formdata">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Descrption</th>
+                    <th>State</th>
+                    <th>Date of Birth</th>
+                    <th>Phone Number</th>
+                    <th>MultiSelect</th>
+                    <th>City</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Confirm Password</th>
+                    <th>Department</th>
+                    <th>Slider</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-values>
+                <tr>
+                    <td>{{values.uname}}</td>
+                    <td>{{values.lname}}</td>
+                    <td>{{values.desc}}</td>
+                    <td>{{values.state}}</td>
+                    <td>{{values.dob}}</td>
+                    <td>{{values.phone}}</td>
+                    <td>{{values.city}}</td>
+                    <td>{{values.data}}</td>
+                    <td>{{values.email}}</td>
+                    <td>{{values.password}}</td>
+                    <td>{{values.ConfPassword}}</td>
+                    <td>{{values.dep1}}</td>
+                    <td>{{values.slider}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <div class="ui-g-2"><button pButton type="button" (click)="deleteLastRow($index)" label="delete Last Row"></button>
+    </div>
+    <div class="ui-g-2"><button pButton type="button" (click)="resetTable($index)" label="Reset Table"></button></div>
+    <br>
+</form>
+</div>

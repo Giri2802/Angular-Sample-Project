@@ -1,0 +1,36 @@
+<fieldset>
+    
+        <h1>Data Binding Concept</h1>
+    <div class="ui-g">
+        <div class="ui-g-3">
+            <h3>Interpolation</h3>
+            <p>{{string1}}</p>
+            <p>{{"Welcome " + string1}}</p>
+            <p>{{string1.length}}</p>
+            <p>{{string1.toUpperCase()}}</p>
+            <p>{{string1.toLowerCase()}}</p>
+            <p>{{siteurl}}</p>
+            <p>{{username}}</p>
+            <p>{{name}}</p>
+        </div>
+
+        <div class="ui-g-3">
+            <h3>Property Binding</h3>
+            <input type="text" value="Giridhar" pInputText />
+            <h3>String Interpolation</h3>
+            <p>{{message}}</p>
+        </div>
+
+        <div class="ui-g-3">
+            <h3>Event Binding</h3>
+            <p-button label="show" (click)="onClick()"></p-button>
+            {{name1}}
+        </div>
+        <div class="ui-g-3">
+            <h3>Two-Way Binding</h3>
+            <input type="text" [(ngModel)]="name11" pInputText />
+            {{name11}}
+        </div>
+
+    </div>
+</fieldset>

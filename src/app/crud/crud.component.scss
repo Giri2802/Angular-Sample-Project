@@ -1,0 +1,55 @@
+.addbtn{
+    padding-top: 0px;
+    background-color: #00ffdc33;
+    font-family:cursive;
+    font-stretch: expanded;
+    
+}
+:host ::ng-deep .adddata{
+    margin-right: 10px;
+    float: right;
+    margin-top: 20px;
+}
+h2{
+    text-align: left;
+    margin-bottom: 35px;
+}
+ ::ng-deep body .ui-table .ui-table-thead > tr > th {
+    padding: 0.571em 0.857em;
+    border: 2px solid #c8c8c8;
+    font-weight: 700;
+    color: #c31212;
+    background-color: #d8dae2;
+}
+::ng-deep body .ui-table .ui-table-tbody > tr > td {
+    background-color: inherit;
+    border: 1px solid #d2d2d0;
+}
+@keyframes ui-progress-spinner-color {
+    100%,
+    0% {
+        stroke: #d62d20;
+    }
+    20% {
+        stroke: #0057e7;
+    }
+    40% {
+        stroke: #008744;
+    }
+    60%{
+        stroke: #5cadd3;
+    }
+    70% {
+        stroke: #ffa700;
+    }
+    80%{
+        stroke: #c31212;
+    }
+    90%{
+        stroke: #7cb4a1;
+    }
+    99%{
+        stroke: #f30404;
+    }
+}
+

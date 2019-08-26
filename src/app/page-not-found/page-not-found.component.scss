@@ -1,0 +1,49 @@
+h1 {
+    color: #3c3c3c;
+    font-size: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+    font-family: 'IBM Plex Mono', monospace;
+}
+h2 {
+    font-size: 45px;
+    margin-top: 20px;
+    font-family: 'IBM Plex Mono', monospace;
+ 
+}
+
+h2 {
+    display: flex;
+    font-size: 2.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    justify-content: center;
+}
+a{
+    color: rgb(211, 201, 58);
+    font-size: 35px;
+    margin-left: 715px;
+    justify-content: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   }
+   a {
+    color: #111;
+    text-decoration: none;
+    position: relative;
+}
+ :host ::ng-deep a::before {
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    top: calc(100% - 7px);
+    background: rgba(0, 255, 0, 0.4);
+    z-index: -1;
+    transition: all 120ms ease-in-out;
+}

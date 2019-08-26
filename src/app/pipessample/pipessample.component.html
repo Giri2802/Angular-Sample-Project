@@ -1,0 +1,78 @@
+<h1>Pipes Concept</h1>
+<div class="ui-g">
+    <div class="ui-g-4">
+        <h3>LoswerCase</h3>
+        <p>{{data1 | lowercase}}</p>
+        <h3>UpperCase</h3>
+        <p>{{data | uppercase}}</p>
+        <h3>Currency Pipe</h3>
+        <p>{{250000 | currency}}</p>
+        <h3>Date Pipe</h3>
+        <p>{{today | date:'d/M/y'}}</p>
+        <p>Short Time: {{today | date:'shortTime'}}</p>
+        <p>Short Date: {{today | date:'shortDate'}}</p>
+        <p>Medium Date: {{today | date:'mediumDate'}}</p>
+        <p>Long: {{today | date:'long'}}</p>
+        <p>Full: {{today | date:'full'}}</p>
+        <p>Medium: {{today | date:'medium'}}</p>
+        <p>Short: {{today | date:'short'}}</p>
+        <p>Long Date: {{today | date:'longDate'}}</p>
+        <p>Full Date: {{today | date:'fullDate'}}</p>
+        <p>Medium Time: {{today | date:'mediumTime'}}</p>
+        <p>Long Time: {{today | date:'longTime'}}</p>
+        <p>Full Time: {{today | date:'fullTime'}}</p>
+    </div>
+
+    <div class="ui-g-4">
+        <h3>Decimal Pipe</h3>
+        <p>{{ num | number: '3.4-4' }}</p>
+        <p>no formatting: {{num | number}}</p>
+        <p>4.5-5: {{num | number:'4.5-5'}}</p>
+        <p>pi Value no formatting: {{pi | number}}</p>
+        <p>pi (3.1-5): {{pi | number:'3.1-5'}}</p>
+        <p>pi (3.5-5): {{pi | number:'3.5-5'}}</p>
+        <p>-2.5 (1.0-0): {{-2.5 | number:'1.0-0'}}</p>
+        <h3>JSON Pipe</h3>
+        <p>{{jsondata | json}}</p>
+        <h3>Percentage Pipe</h3>
+        <p>percent: {{marks | percent}}</p>
+        <p>percent: {{marks | percent:'4.3-5'}}</p>
+        <p>percent: {{marks1 | percent}}</p>
+        <p>percent: {{marks1 | percent:'4.3-5'}}</p>
+        <h3>Chaining Pipe</h3>
+        <p>{{today | date:fullDate | uppercase }}</p>
+        <h3>PipeTransofrm Interface</h3>
+        <p>{{marks | custpipe:25}}</p>
+        <p>For Pure and Impure Pipe see the Console for Output.</p>
+    </div>
+    <div class="ui-g-4">
+
+        <h3>Slice Pipe</h3>
+        <p>{{str}}[2:4]: '{{str | slice:2:4}}'</p>
+        <p>{{str}}[4:0]: '{{str | slice:4:0}}'</p>
+        <p>{{str}}[-4]: '{{str | slice:-4}}'</p>
+        <p>{{str}}[-4:-2]: '{{str | slice:-4:-2}}'</p>
+        <p>{{str}}[-100]: '{{str | slice:-100}}'</p>
+        <p>{{str}}[100]: '{{str | slice:100}}'</p>
+        <h3>Key Value Pipe</h3>
+        <span>
+            <p>Object</p>
+            <div *ngFor="let item of object | keyvalue">
+                {{item.key}}:{{item.value}}
+            </div>
+            <p>Map</p>
+            <div *ngFor="let item of map | keyvalue">
+                {{item.key}}:{{item.value}}
+            </div>
+        </span>
+        <h3>async Pipe</h3>
+        <div><code>observable|async</code>: Time: {{ time | async }}</div>
+        <h3>Parameterizing Pipe</h3>
+        <p>The hero's birthday is {{ birthday | date:format }}</p>
+        <p-toggleButton (click)="toggleFormat()" onLabel="ShortDate" offLabel="Full Date" [style]="{'width':'150px'}">
+        </p-toggleButton>
+        <h3>Custom Pipe to Print Foregin Time</h3>
+        <p>PIPE TODAY:: {{today | date:'dd-MM-yyyy hh:mm:ss a':'+0530'}}</p>
+        <p>London TODAY:: {{jstoday}}</p>
+    </div>
+</div>

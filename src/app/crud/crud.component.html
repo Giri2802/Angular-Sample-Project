@@ -1,0 +1,96 @@
+<p-toast></p-toast>
+
+<div class="addbtn ui-g">
+    <div class="ui-g-5"></div>
+    <div class="ui-g-4">
+        <h2>CRUD Operations</h2>
+    </div>
+    <div class="ui-g-3">
+        <button pButton class="adddata" icon="pi pi-fw pi-plus" label=" Add Data" routerLink='/addemp'></button>
+    </div>
+</div>
+
+<p-table #dt [value]="employeeList" [paginator]="true" 
+[rows]="10" [totalRecords]="totalRecords" [rowsPerPageOptions]="[10,20,30,40,50]">
+    <ng-template pTemplate="caption">
+        <div style="text-align: right">
+            <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+            <input type="text" pInputText size="50" placeholder="Global Filter" [(ngModel)]="searchText"
+                (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Salary</th>
+            <th>Age</th>
+            <th>Actions</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-val>
+        <tr style="text-align: center">
+            <td>{{val.id}}</td>
+            <td>{{val.employee_name}}</td>
+            <td>{{val.employee_salary}}</td>
+            <td>{{val.employee_age}}</td>
+            <td>
+                <!-- routerLink="/empdetail" -->
+                <button pButton icon="pi pi-fw pi-pencil" (click)="showDialog(val.id)" 
+                    class="ui-button-rounded ui-button-warning" tooltipPosition="left"
+                    pTooltip="Update"></button>&nbsp;&nbsp;&nbsp;
+                <button pButton icon="pi pi-fw pi-trash" (click)="deleteEmployee(val.id)"
+                    class="ui-button-rounded ui-button-danger" tooltipPosition="right" pTooltip="Delete"></button>
+            </td>
+        </tr>
+    </ng-template>
+    
+</p-table>
+
+<div class="ui-g">
+
+    <div class="ui-g-5"></div>
+    <div class="ui-g-4">
+        <p-progressSpinner *ngIf="loading else loaded">
+        </p-progressSpinner>
+    </div>
+</div>
+
+
+<div *ngIf="employee">
+    <app-employee-detail [employee]="employee"></app-employee-detail>
+</div>
+<p-dialog header="Employee Details" [(visible)]="display" [modal]="true" [responsive]="true"
+    [style]="{width: '500px', minWidth: '200px'}" [minY]="70" [maximizable]="true" [baseZIndex]="10000">
+    <form [formGroup]="dialogForm">
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <span class="ui-float-label">
+                    <input id="employeeName" type="text" size="40" pInputText formControlName="name">
+                    <label for="employeeName">Employee_Name</label>
+                </span>
+            </div>
+            <br>
+            <div class="ui-g-12">
+                <span class="ui-float-label">
+                    <input id="employeeSalary" type="text" size="40" pInputText formControlName="salary">
+                    <label for="employeeSalary">Employee_Salary</label>
+                </span>
+            </div>
+            <br>
+            <div class="ui-g-12">
+                <span class="ui-float-label">
+                    <input id="employeeAge" type="text" size="40" pInputText formControlName="age">
+                    <label for="employeeAge">Employee_Age</label>
+                </span>
+            </div>
+        </div>
+
+    </form>
+
+    <p-footer>
+        <button type="button" pButton icon="pi pi-check" (click)="updateUser()" routerLink='/crud' label="Yes"></button>
+        <button type="button" pButton icon="pi pi-close" (click)="display=false" label="No"
+            class="ui-button-secondary"></button>
+    </p-footer>
+</p-dialog>

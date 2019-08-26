@@ -1,0 +1,46 @@
+{
+    "/get": {
+        "target": "http://www.somaku.com",
+        "secure": false,
+        "pathRewrite": {
+            "^/get": "http://www.somaku.com/posts"
+        },
+        "changeOrigin": true
+    },
+    "/post": {
+        "target": "http://dummy.restapiexample.com",
+        "secure": false,
+        "pathRewrite": {
+            "^/post": "http://dummy.restapiexample.com/api/v1/employees"
+        },
+        "changeOrigin": true
+    },
+    "/localurl": {
+        "target": "http://172.17.12.97:8080",
+        "secure": false,
+        "pathRewrite": {
+            "^/localurl": "http://172.17.12.97:8080/getalldata"
+        }
+    },
+    "/update":{
+        "target": "http://172.17.12.97:8080",
+        "secure":false,
+        "pathRewrite":{
+            "^/update": "http://172.17.12.97:8080/updatedata"
+        }
+    },
+    "/delete":{
+        "target": "http://172.17.12.97:8080",
+        "secure":false,
+        "pathRewrite":{
+            "^/delete": "http://172.17.12.97:8080/deletedata"
+        }
+    },
+    "/create":{
+        "target": "http://172.17.12.97:8080",
+        "secure":false,
+        "pathRewrite":{
+            "^/create": "http://172.17.12.97:8080/adddata"
+        }
+    }
+}

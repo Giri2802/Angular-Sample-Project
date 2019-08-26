@@ -1,0 +1,51 @@
+<div >
+        <h2>Proxy CRUD Operations</h2>
+    </div>
+<form [formGroup]="proxyForm">
+        <input type="text" formControlName="id" placeholder="Id" pInputText>&nbsp;&nbsp;
+        <input pInputText type="text" formControlName="name" placeholder="name">&nbsp;&nbsp;
+        <input pInputText type="text" formControlName="gender" placeholder="gender">&nbsp;&nbsp;
+    <!-- <div class="ui-g-12">
+        <div class="ui-g-4">
+            
+        </div>
+        <div class="ui-g-4">
+            
+        </div>
+        <div class="ui-g-4">
+            
+        </div> -->
+        <button pButton type="button" label="Update" class="ui-button-rounded ui-button-warning" (click)="updateRow(proxyForm)"></button>&nbsp;&nbsp;
+        
+        <button pButton type="button" label="Add Row" class="ui-button-rounded ui-button-success" (click)="addData(proxyForm)"></button>
+        <br>
+    <!-- </div> -->
+
+</form>
+<br>
+<p-table [value]="proxyGetData">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Actions</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-val>
+        <tr>
+            <td>{{val.id}}</td>
+            <td>{{val.name}}</td>
+            <td>{{val.gender}}</td>
+            <td>
+                <button pButton icon="pi pi-fw pi-pencil" class="ui-button-rounded ui-button-warning"
+                    (click)="updateData(val)" tooltipPosition="left" pTooltip="Update"></button>&nbsp;&nbsp;&nbsp;
+                <button pButton icon="pi pi-fw pi-trash" class="ui-button-rounded ui-button-danger"
+                    (click)="delete(val.id)" tooltipPosition="right" pTooltip="Delete"></button>
+            </td>
+        </tr>
+    </ng-template>
+
+</p-table>
+<p-progressSpinner *ngIf="loading else loaded">
+    </p-progressSpinner>
